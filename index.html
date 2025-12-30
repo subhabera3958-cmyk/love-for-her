@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<style>
+    body {
+        background: black;
+        color: #ffb6c1;
+        font-family: "Courier New", monospace;
+        text-align: center;
+        padding-top: 40px;
+    }
+    #text {
+        font-size: 20px;
+        white-space: pre-line;
+        min-height: 200px;
+    }
+    .heart {
+        color: red;
+        font-size: 18px;
+        line-height: 1.2;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div id="text"></div>
+
+<pre class="heart" id="heart1">
+   **   **
+ ****** ******
+**************
+ ************
+  **********
+    ******
+      **
+</pre>
+
+<pre class="heart" id="heart2">
+   **   **
+ ****** ******
+**************
+ ************
+  **********
+    ******
+</pre>
+
+<pre class="heart" id="heart3">
+   **   **
+ ****** ******
+**************
+ ************
+  **********
+</pre>
+
+<script>
+const messages = [
+    "💖 Surprise loading...",
+    "🌸 Just one moment...",
+    "✨ Something special for you...",
+    "",
+    "Dear ❤️",
+    "Do you know?",
+    "Your smile makes all my sadness disappear 😊",
+    "Even your anger looks cute to me 😄",
+    "I just want to make you smile, always 💕",
+    "",
+    "I care for you more than you know 💝",
+    "Always yours ❤️"
+];
+
+let textDiv = document.getElementById("text");
+let msgIndex = 0;
+let charIndex = 0;
+
+function slowPrint() {
+    if (msgIndex < messages.length) {
+        if (charIndex < messages[msgIndex].length) {
+            textDiv.innerHTML += messages[msgIndex][charIndex];
+            charIndex++;
+            setTimeout(slowPrint, 40);
+        } else {
+            textDiv.innerHTML += "\n";
+            msgIndex++;
+            charIndex = 0;
+            setTimeout(slowPrint, 700);
+        }
+    } else {
+        showHearts();
+    }
+}
+
+function showHearts() {
+    let hearts = ["heart1", "heart2", "heart3"];
+    let i = 0;
+    setInterval(() => {
+        document.querySelectorAll(".heart").forEach(h => h.style.display = "none");
+        document.getElementById(hearts[i % hearts.length]).style.display = "block";
+        i++;
+    }, 400);
+}
+
+slowPrint();
+</script>
+
+<h2 style="color:white;margin-top:30px;">❤️ Love you forever ❤️</h2>
+
+</body>
+</html>
